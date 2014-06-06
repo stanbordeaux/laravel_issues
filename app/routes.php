@@ -70,36 +70,34 @@
 // 	return View::make('tests.user', compact('users'));
 // });
 
-Route::get('/', function()
-{
-	// $user = User::with('issues')->whereId(3)->first();
-	// $issues = $user->issues;
-	// echo $user->username;
-	// foreach($issues as $i)
-	// {
-	// 	echo  '<br>'.$i->title.'<br>'.$i->desc;
-	// }
+// Route::get('/', function()
+// {
+// 	// $user = User::with('issues')->whereId(3)->first();
+// 	// $issues = $user->issues;
+// 	// echo $user->username;
+// 	// foreach($issues as $i)
+// 	// {
+// 	// 	echo  '<br>'.$i->title.'<br>'.$i->desc;
+// 	// }
 
-	// return $issues->user->username;
-	// $issues = Issue::with('user')->whereUserId(11)->get();
+// 	// return $issues->user->username;
+// 	// $issues = Issue::with('user')->whereUserId(11)->get();
    
- //   $issues->sortBy('title')->all();
- //   return $issues;
-	// foreach($issues as $i)
-	// {
-	// 	echo $i->user->username.'<br>'.$i->title.'<br>';
-	// }
+//  //   $issues->sortBy('title')->all();
+//  //   return $issues;
+// 	// foreach($issues as $i)
+// 	// {
+// 	// 	echo $i->user->username.'<br>'.$i->title.'<br>';
+// 	// }
 
-	// $issues = User::find(1)->issues;
+// 	// $issues = User::find(1)->issues;
 
-	// foreach($issues as $i)
-	// {
-	// 	echo $i->title .'<br>'.$i->desc.'<br>';
-	// }
+// 	// foreach($issues as $i)
+// 	// {
+// 	// 	echo $i->title .'<br>'.$i->desc.'<br>';
+// 	// }
 
-	// 
+// 	// 
 
-	$users = User::all();
-	$users->sortBy('username')->all();
-	return $users;
-});
+	
+// });
