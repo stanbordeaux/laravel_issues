@@ -78,7 +78,7 @@ return array(
 	|
 	*/
 
-	'key' => 'XaFTXSvrwqlDwrLYo6EropXddYRo49pS',
+	'key' => 'lkQImf3tJ5qYD37zCuuuHdSjZPKj0Rmz',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -119,8 +119,7 @@ return array(
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
-		'Way\Generators\GeneratorsServiceProvider',
-		'Laracasts\Validation\ValidationServiceProvider'
+		'Way\Generators\GeneratorsServiceProvider'
 
 	),
 

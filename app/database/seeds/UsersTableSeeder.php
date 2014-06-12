@@ -1,28 +1,25 @@
-<?php 
+<?php
 
 class UsersTableSeeder extends Seeder {
-
-	public function run()
+	
+	public function run() 
 	{
-		User::truncate();
+		$this->command->info("setting up users table deleting contents....");
 
-		$faker = Faker\Factory::create();
 		
-		User::create([
-			'username' => 'stan',
-			'email' => 'stan@email.com',
-			'password' => Hash::make('1234')
-		]);
-
-		foreach (range(2, 10) as $index)
+			
+		$faker = Faker\Factory::create();
+		foreach(range(1, 30) as $index)
 		{
 			User::create([
-				'username' => $faker->userName(),
-				'email' => $faker->email(),
-				'password' => Hash::make('1234')
+				"username" => $faker->unique()->userName,
+				"email" => $faker->unique()->email,
+				"password" => Hash::make($faker->word),
+				
+				
 			]);
-		}
-		
 
+		}
+		$this->command->info("seeding users table...");
 	}
 }

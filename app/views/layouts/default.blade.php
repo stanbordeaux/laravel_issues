@@ -14,7 +14,7 @@
     
 
     <!-- Custom styles for this template -->
-    <link href="../css/style.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 
     
   </head>
@@ -36,7 +36,7 @@
           <ul class="nav navbar-nav">
             <li class="active">{{ HTML::link('/', 'Home') }}</li>
             <li>{{ HTML::link('/about', 'About')}}</li>
-            <li>{{ HTML::link('/contact', 'Contact')}}</li>
+            <li>{{ HTML::link('/issues', 'Issues')}}</li>
             <li>{{ HTML::link('/register', 'Register')}}</li>
             @if (Auth::guest())
              <li>{{ HTML::link('/login', 'Login')}}</li>
@@ -52,9 +52,9 @@
     <div class="container">
       <br>
      
-      
+      <div class="starter-template">
         @yield('content')
-     
+      </div>
 
     </div><!-- /.container -->
 

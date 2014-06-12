@@ -20,6 +20,9 @@ ClassLoader::addDirectories(array(
 
 ));
 
+// Add macros
+require app_path().'/library/macros.php';
+
 /*
 |--------------------------------------------------------------------------
 | Application Error Logger

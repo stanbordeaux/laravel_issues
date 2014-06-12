@@ -1,18 +1,15 @@
-@extends ('layouts.adminMaster')
+@extends('layouts.adminMaster')
 
 @section('content')
 
-	
+	<h1>{{ $user->username }}</h1>
+
 	<article> 
- <h1>Issue Finder</h1>
- 	<ul class='list-group'>
-	 	<h3>Issues for {{link_to("{$user->username}", $user->username)}}</h3>
-		@foreach($issues as $i)
-			<li class='list-group-item'>{{ $i->desc }}</li>
+		@foreach($user->issues as $i)
+		{{ $i->desc }} <br>
 		@endforeach
-	</ul>		
 	</article>
 	
-	<p>{{ link_to('/issues/', 'Go Back') }}</p>
+	<p>{{ link_to('/users', 'All users') }}</p>
 
 @stop

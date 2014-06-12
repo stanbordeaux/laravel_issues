@@ -8,7 +8,7 @@
 	<h1>Here are the issues</h1>
 	<ul>
 		@foreach ($issues as $issue)
-		<li>{{ link_to('issues/$issue->id', $issue->issue_title) }}</li>
+		<li>{{ link_to('issues/$issue->user->id', $issue->username) }}</li>
 		@endforeach
 	</ul>
 </body>

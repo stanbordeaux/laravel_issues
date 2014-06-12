@@ -16,11 +16,23 @@ class AdminController extends \BaseController {
 		}
 		else
 		{
-			$issues = Issue::with('user')->get();
+			$data['issueCount'] = Issue::count();
+			$data['issues'] = Issue::with('user')->orderBy('created_at', 'desc')->get();
+			$data['activeCount'] = Issue::whereStatusId(1)->count();
+			$data['fixedCount'] = Issue::whereStatusId(2)->count();
+			$data['deferredCount'] = Issue::whereStatusId(3)->count();
+			$data['unassignedCount'] = Issue::whereStatusId(4)->count();
 			
-			return View::make('issues.index', compact('issues'));
+			$data['activePercent'] =( $data['activeCount'] / $data['issueCount']) * 100;
+			$data['fixedPercent'] =( $data['fixedCount'] / 30) * 100;
+			$data['unassignedPercent'] =( $data['unassignedCount'] / 30) * 100;
+			
+// 			return 'active = ' .$activeCount;
+			
+// 			return $issues;
+			
+			return View::make('issues.index', $data);
 		}
-		
 	}
 
 	/**

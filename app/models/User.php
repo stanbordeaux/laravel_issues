@@ -26,6 +26,23 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 */
 	protected $hidden = array('password');
 
+
+	
+	/**
+	*Establish the relationship with Issue - cunrrently a one -to-many
+	*
+	*/
+	
+	public function issues()
+	{
+		return $this->hasMany('Issue');
+	}
+	
+	public function projects()
+	{
+		return $this->hasMany('Project');
+	}
+	
 	/**
 	 * Get the unique identifier for the user.
 	 *
@@ -91,10 +108,4 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	{
 		$this->attributes['password'] = Hash::make($password);
 	}
-
-	public function issues()
-	{
-		return $this->hasMany('Issue');
-	}
-
 }
