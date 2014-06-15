@@ -1,9 +1,28 @@
+html {
+    overflow-y: scroll;
+}
 body {
   padding-top: 50px;
 }
 .starter-template {
   padding: 40px 15px;
   text-align: center;
+}
+
+.extra-large {
+    font-family: 'Josefin Slab', serif;
+    font-size: 4em;
+    font-weight: 700;
+
+}
+
+.md-large {
+    font-family: 'Josefin Slab', serif;
+    font-size: 2em;
+
+}
+.top-buffer {
+    margin-top: 30px;
 }
 
 /*The basic css for login and registration forms*/
@@ -81,4 +100,42 @@ body {
 {
     display: block;
     margin-top: 10px;
+}
+
+/*Styles for the clock*/
+.clock {
+    background:;
+     font:bold 12px Arial, Helvetica, sans-serif;
+     margin:0;
+     padding: 20px 0;
+     color:#bbbbbb; 
+     height: 100px;
+     border-radius: 5px; 
+    -moz-border-radius: 5px; 
+    -webkit-border-radius: 5px; 
+    border: 2px solid #800000;
+    }
+.clock ul { 
+    margin:0 auto; 
+    padding:0px; 
+    list-style:none; 
+    text-align:center; 
+}
+.clock ul li { 
+    display:inline; 
+    font-size:2em; 
+    text-align:center; 
+    /*font-family: Arial, Helvetica, sans-serif; text-shadow:0 0 5px #00c6ff; */
+}
+
+#point { 
+    position:relative; -moz-animation:mymove 1s ease infinite; -webkit-animation:mymove 1s ease infinite; 
+    padding-left:10px; 
+    padding-right:10px; 
+}
+#Date { 
+    font-family: Arial, Helvetica, sans-serif; 
+    font-size:20px; 
+    text-align:center; 
+    /*text-shadow:0 0 5px #00c6ff; */
 }

@@ -42,11 +42,11 @@ class SessionsController extends \BaseController {
 
 		if ($attempt)
 		{
-			return Redirect::to('/admin');
+			return Redirect::to('admin');
 		}
 		else
 		{
-			return Redirect::to('/login');
+			return Redirect::to('login');
 		}
 
 	}

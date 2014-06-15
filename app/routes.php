@@ -20,7 +20,7 @@ Route::get('/users', 'UsersController@index');
 
 Route::get('logout', 'SessionsController@destroy');
 
-Route::get('/admin', 'IssuesController@index');
+Route::get('admin', 'AdminController@index');
 
 Route::get('issues', 'IssuesController@index');
 
@@ -29,6 +29,10 @@ Route::get('issues/create', 'IssuesController@create');
 Route::get('issues/{id}/edit', 'IssuesController@edit');
 
 Route::put('issues/{id}', 'IssuesController@update');
+
+Route::get('about', 'PagesController@about');
+
+Route::get('team', 'PagesController@team');
 
 // Route::post('store', 'IssuesController@store');
 

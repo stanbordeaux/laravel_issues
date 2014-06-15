@@ -11,31 +11,30 @@ class IssuesController extends \BaseController {
 	public function index()
 	{
 			
-			//check authorisation 
-			if (Auth::guest())
-			{
-				return Redirect::to('/login');
-			}
-			else	
-			{
-			//get all the issues with relevant relationships	
-			$data['issues'] = Issue::with('user', 'status', 'priority')->orderBy('updated_at', 'desc')->get();
+		//check authorisation 
+		if (Auth::guest())
+		{
+			return Redirect::to('/login');
+		}
+		else	
+		{
+		//get all the issues with relevant relationships	
+		$data['issues'] = Issue::with('user', 'status', 'priority')->orderBy('updated_at', 'desc')->get();
+	
+		//counts of issue status for reporting details
+	  	$data['issueCount'] = Issue::count();
+		$data['activeCount'] = Issue::whereStatusId(1)->count();
+		$data['closedCount'] = Issue::whereStatusId(2)->count();
+		$data['unassignedCount'] = Issue::whereStatusId(3)->count();
 		
-			//counts of issue status for reporting details
-		  $data['issueCount'] = Issue::count();
-			$data['activeCount'] = Issue::whereStatusId(1)->count();
-			$data['fixedCount'] = Issue::whereStatusId(2)->count();
-			$data['deferredCount'] = Issue::whereStatusId(3)->count();
-			$data['unassignedCount'] = Issue::whereStatusId(4)->count();
-			
-		  //calculate percentage of issue status 
-			$data['activePercent'] =( $data['activeCount'] / $data['issueCount']) * 100;
-			$data['fixedPercent'] =( $data['fixedCount'] / 30) * 100;
-			$data['unassignedPercent'] =( $data['unassignedCount'] / 30) * 100;
-			
-			//get the view
-			return View::make('issues.index', $data);
-			}
+	  	//calculate percentage of issue status 
+		$data['activePercent'] =( $data['activeCount'] / $data['issueCount']) * 100;
+		$data['closedPercent'] =( $data['closedCount'] / 30) * 100;
+		$data['unassignedPercent'] =( $data['unassignedCount'] / 30) * 100;
+		
+		//get the view
+		return View::make('issues.index', $data);
+		}
 				    
 	}
 
@@ -139,18 +138,18 @@ class IssuesController extends \BaseController {
 
 		// process the login
 		if ($validator->fails()) {
-			return Redirect::to('nerds/' . $id . '/edit')
-				->withErrors($validator));
+			return Redirect::to('issues/' . $id . '/edit')
+				->withErrors($validator);
 
 		} else {
-			// store
+			//update
 			$issue = Issue::find($id);
 			$issue->title = Input::get('title');
 			$issue->desc  = Input::get('desc');
 			$issue->user_id = Input::get('user_id');
 			$issue->priority_id = Input::get('priority_id');
 			$issue->status_id = Input::get('status_id');
-			$nerd->save();
+			$issue->save();
 
 			// redirect
 			Session::flash('message', 'Successfully updated issue!');
@@ -169,6 +168,7 @@ class IssuesController extends \BaseController {
 	public function destroy($id)
 	{
 		//
+		
 	}
 
 }

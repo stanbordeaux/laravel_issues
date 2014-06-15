@@ -2,19 +2,22 @@
 <html lang="en">
     <head>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8"> 
-        <title>Tiny IssueTracker</title>
+        <title>Tiny DashboardManager</title>
         <meta name="generator" content="Bootply" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
-			<link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+		  	<link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+        <link rel="stylesheet" href="{{ URL::asset('css/style.css') }}">
+        <link rel="stylesheet" href="{{ URL::asset('flipclock/js/flipclock.css') }}">
+
 <!--         <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" type="text/css" rel="stylesheet"> -->
         <!--[if lt IE 9]>
           <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
         <!-- CSS code from Bootply.com editor -->
-        
+          
         <style type="text/css">
-            .navbar-static-top {
+/*            .navbar-static-top {
   margin-bottom:20px;
 }
 
@@ -44,45 +47,25 @@ footer {
   -ms-border-radius: 10px;
   -o-border-radius: 10px;
   border-radius: 10px;
-}
+}*/
         </style>
+
+
     </head>
     
     <!-- HTML code from Bootply.com editor -->
     
     <body  >
         
-        <!-- Header -->
-<div id="top-nav" class="navbar navbar-inverse navbar-static-top">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-          <span class="icon-toggle"></span>
-      </button>
-      <a class="navbar-brand" href="#">Control Panel</a>
-    </div>
-    <div class="navbar-collapse collapse">
-      <ul class="nav navbar-nav navbar-right">
-        <li>{{ HTML::link('/', 'Home')}}  </li>
-        <li class="dropdown">
-          <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#">
-            <i class="glyphicon glyphicon-user"></i> Admin <span class="caret"></span></a>
-          <ul id="g-account-menu" class="dropdown-menu" role="menu">
-            <li><a href="#"><i class="glyphicon glyphicon-eye-open"></i> My Profile</a></li>
-						<li>{{ HTML::link_nested('/logout', ' Logout', '', '', '<i class="glyphicon glyphicon-log-out"></i>')}} </li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-  </div><!-- /container -->
-</div>
-<!-- /Header -->
+  @include('layouts.partials._navigation')
+
+
 
 <!-- Main -->
 <div class="container">
   
   <!-- upper section -->
-  <div class="row">
+  <div class="row top-buffer">
 	<div class="col-md-3">
       <!-- left -->
       <a href="#"><strong><i class="glyphicon glyphicon-hdd"></i> Toolbox</strong></a>
@@ -108,13 +91,13 @@ footer {
      
        <a href="#"><strong><i class="glyphicon glyphicon-dashboard"></i> My Dashboard</strong></a>  
             
-       <hr>
+       
       
 	   <div class="row">
 	<div class="col-md-12">
 			         @yield('content')
               
-              <hr>
+              
               
                     
               
@@ -127,7 +110,7 @@ footer {
 <!-- /Main -->
 
 
-<footer class="text-center">This Bootstrap 3 dashboard layout is compliments of <a href="http://www.bootply.com/85850"><strong>Bootply.com</strong></a></footer>
+<footer class="text-center"></footer>
 
 
 <div class="modal" id="addWidgetModal">
@@ -157,7 +140,7 @@ footer {
 
         <script type='text/javascript' src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 
-
+<script src="{{ URL::asset('flipclock/js/flipclock.min.js') }}"></script>
 
 
 
@@ -165,13 +148,23 @@ footer {
         <!-- JavaScript jQuery code from Bootply.com editor -->
         
         <script type='text/javascript'>
-        
-        $(document).ready(function() {
-        
-            
-        
+    var clock;
+    
+    $(document).ready(function() {
+      var clock;
+      var time = clock.getTime();
+      clock = $('.theclock').FlipClock(10, {
+            clockFace: 'MinuteCounter',
+            countdown: false,
+
+            callbacks: {
+              stop: function() {
+                $('.message').html('The clock has stopped!')
+              }
+            }
         });
-        
+
+    });        
         </script>
         
     </body>

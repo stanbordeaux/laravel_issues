@@ -23,6 +23,11 @@ class PagesController extends \BaseController {
 		//
 	}
 
+	public function team()
+	{
+		$users = User::all();
+		return View::make('pages.team', compact('users'));
+	}
 	/**
 	 * Store a newly created resource in storage.
 	 *
@@ -75,6 +80,12 @@ class PagesController extends \BaseController {
 	public function destroy($id)
 	{
 		//
+	}
+
+	public function about()
+	{
+		$team = User::all();
+		return View::make('pages.about', compact('team'));
 	}
 
 }

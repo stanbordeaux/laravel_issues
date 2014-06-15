@@ -1,29 +1,26 @@
 <?php
 
-class AdminController extends \BaseController {
+class UsersController extends \BaseController {
 
 	/**
 	 * Display a listing of the resource.
+	 * GET /users
 	 *
 	 * @return Response
 	 */
 	public function index()
 	{
 		//
-		if (Auth::guest())
-		{
-			return Redirect::to('/login');
-		}
-		else
-		{
-			
-			$users = User::orderBy('id')->get();
-			return View::make('admin.index', compact('users'));
-		}
+		$users = User::orderBy('id', 'ASC')->get();
+// 	 	$users->orderBy('username', 'DESC')->get();	
+		
+		return View::make('users.index', compact('users'));
+		
 	}
 
 	/**
 	 * Show the form for creating a new resource.
+	 * GET /users/create
 	 *
 	 * @return Response
 	 */
@@ -34,6 +31,7 @@ class AdminController extends \BaseController {
 
 	/**
 	 * Store a newly created resource in storage.
+	 * POST /users
 	 *
 	 * @return Response
 	 */
@@ -44,6 +42,7 @@ class AdminController extends \BaseController {
 
 	/**
 	 * Display the specified resource.
+	 * GET /users/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response
@@ -55,6 +54,7 @@ class AdminController extends \BaseController {
 
 	/**
 	 * Show the form for editing the specified resource.
+	 * GET /users/{id}/edit
 	 *
 	 * @param  int  $id
 	 * @return Response
@@ -66,6 +66,7 @@ class AdminController extends \BaseController {
 
 	/**
 	 * Update the specified resource in storage.
+	 * PUT /users/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response
@@ -77,6 +78,7 @@ class AdminController extends \BaseController {
 
 	/**
 	 * Remove the specified resource from storage.
+	 * DELETE /users/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response

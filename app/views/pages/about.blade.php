@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.default')
 
 @section('sidebar')
 
@@ -13,7 +13,7 @@
 	<p>Here is some stuff about us</p>
 	<ul>
 		@foreach ($team as $t)
-		<li>{{ $t }}</li>
+		<li>{{ $t->username }}</li>
 		@endforeach
 	</ul>
 	
