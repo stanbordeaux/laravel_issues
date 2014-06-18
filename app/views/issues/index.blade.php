@@ -1,12 +1,20 @@
 @extends('layouts.adminMaster')
 
 @section('content')
+
 	@include('issues.counter', array('issueCount' => $issueCount, 'issues' => $issues))
-	<div class="row">
-		<div class="col-md-12">
-	<h2>Here are the issues</h2>
-	
-<div class="well">Current Issues <span class="badge pull-right">{{ $issueCount }}</span></div>
+
+<div class="well">{{ $title }} <span class="badge pull-right">
+@if ($type == 1)
+{{ $activeCount }}
+@elseif ($type == 2)
+{{ $closedCount }}
+	@elseif ($type == 3)
+{{ $unassignedCount }}
+	@elseif ($type == 0)
+	{{ $issueCount }}
+@endif
+</span></div>
 			
 <!-- will be used to show any messages -->
 @if (Session::has('message'))
@@ -17,7 +25,7 @@
 	<thead>
 		<tr>
 			<td>#</td>
-			<td>Title</td>
+			<td>Issue</td>
 	
 			<td>Assigned</td>
 			<td>Priority</td>

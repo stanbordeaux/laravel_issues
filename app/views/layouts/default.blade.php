@@ -51,11 +51,7 @@
     </script>
 		
 		<script type="text/javascript">
-		$(document).ready(function(){
-    $(".tooltip-examples a").tooltip({
-			placement: 'top'
-		});   
-});
+		 $('#phptip').tooltip('toggle')
 </script>
 		
 	

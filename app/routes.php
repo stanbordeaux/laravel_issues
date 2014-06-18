@@ -34,6 +34,8 @@ Route::get('about', 'PagesController@about');
 
 Route::get('team', 'PagesController@team');
 
+Route::get('issueStatus/{id}', 'IssuesController@issueStatus');
+
 Route::get('test', function()
 {
 	return View::make('pages.test');

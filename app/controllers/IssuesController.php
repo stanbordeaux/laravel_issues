@@ -20,17 +20,19 @@ class IssuesController extends \BaseController {
 		{
 		//get all the issues with relevant relationships	
 		$data['issues'] = Issue::with('user', 'status', 'priority')->orderBy('updated_at', 'desc')->get();
+		$data['title'] = "All issues";
 	
 		//counts of issue status for reporting details
-	  	$data['issueCount'] = Issue::count();
+	  $data['issueCount'] = Issue::count();
 		$data['activeCount'] = Issue::whereStatusId(1)->count();
 		$data['closedCount'] = Issue::whereStatusId(2)->count();
 		$data['unassignedCount'] = Issue::whereStatusId(3)->count();
+		$data['type'] = 0;
 		
 	  	//calculate percentage of issue status 
 		$data['activePercent'] =( $data['activeCount'] / $data['issueCount']) * 100;
-		$data['closedPercent'] =( $data['closedCount'] / 30) * 100;
-		$data['unassignedPercent'] =( $data['unassignedCount'] / 30) * 100;
+		$data['closedPercent'] =( $data['closedCount'] / $data['issueCount']) * 100;
+		$data['unassignedPercent'] =( $data['unassignedCount'] / $data['issueCount']) * 100;
 		
 		//get the view
 		return View::make('issues.index', $data);
@@ -168,6 +170,55 @@ class IssuesController extends \BaseController {
 	public function destroy($id)
 	{
 		//
+		
+	}
+	
+	public function issueStatus($id)
+	{
+
+// 				$data['issues'] = Issue::with('user', 'status', 'priority')->orderBy('updated_at', 'desc')->get();
+// 				$data['title'] = "All issues";
+
+				//counts of issue status for reporting details
+				$data['issueCount'] = Issue::count();
+				$data['activeCount'] = Issue::whereStatusId(1)->count();
+				$data['closedCount'] = Issue::whereStatusId(2)->count();
+				$data['unassignedCount'] = Issue::whereStatusId(3)->count();
+				
+
+					//calculate percentage of issue status 
+				$data['activePercent'] =( $data['activeCount'] / $data['issueCount']) * 100;
+				$data['closedPercent'] =( $data['closedCount'] / $data['issueCount']) * 100;
+				$data['unassignedPercent'] =( $data['unassignedCount'] / $data['issueCount']) * 100;
+			switch ($id) 
+			{
+				case 1:
+
+				$data['issues'] = Issue::with('user', 'status', 'priority')->whereStatusId(1)->orderBy('updated_at', 'desc')->get();
+					$data['title'] = "All active issues";
+				$data['type'] = 1;
+					break;
+
+				case 2:
+
+				$data['issues'] = Issue::with('user', 'status', 'priority')->whereStatusId(2)->orderBy('updated_at', 'desc')->get();
+					$data['title'] = "All closed issues";
+				$data['type'] = 2;
+					break;
+
+				case 3:
+
+				$data['issues'] = Issue::with('user', 'status', 'priority')->whereStatusId(3)->orderBy('updated_at', 'desc')->get();
+					$data['title'] = "All unassigned issues";
+				$data['type'] = 3;
+			
+					break;
+				
+						
+		}
+			return View::make('issues.index', $data);
+		
+		
 		
 	}
 

@@ -6,6 +6,7 @@
 		
 			<div class="col-md-6 col-md-offset-3">
 				<h1>Our Team</h1>
+				 
 				<h3>At your service</h3>
 			</div>
 		</div>
@@ -21,7 +22,7 @@
             <div class="col-md-4">
                 <h3>Tilbo Black</h3>
                 <h4>Web Development</h4>
-							
+													
                <!-- Modal -->
 							<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" 
 								 aria-labelledby="myModalLabel" aria-hidden="true">
@@ -42,7 +43,7 @@
 													 <ul class="list-group">
 														 <h4>Web Development Professional</h4>
 												 <li class="list-group-item">CMS Development</li>
-												 <li class="list-group-item"><a href="#" class="tooltip-examples"  data-toggle="tooltip" data-original-title="PHP: Web development programming for dynamic content">PHP</a></li>
+												 <li class="list-group-item"><a href="#" id="phptip"  data-toggle="tooltip" title="PHP: Web development programming for dynamic content">PHP</a></li>
 												 <li class="list-group-item">Database administration</li>
 												</ul>
 											 </div>
