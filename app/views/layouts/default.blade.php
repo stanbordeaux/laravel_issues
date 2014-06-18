@@ -8,6 +8,8 @@
     <meta name="author" content="Stan Bordeaux">
 <!--    <link rel="shortcut icon" href="../../assets/ico/favicon.ico">-->
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+		<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css" rel="stylesheet">
+		
     <title>Tiny::DashboardManager</title>
 
     <!-- Bootstrap core CSS -->
@@ -47,5 +49,15 @@
         });
       });
     </script>
+		
+		<script type="text/javascript">
+		$(document).ready(function(){
+    $(".tooltip-examples a").tooltip({
+			placement: 'top'
+		});   
+});
+</script>
+		
+	
 </body>
 </html>

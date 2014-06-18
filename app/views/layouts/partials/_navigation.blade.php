@@ -18,7 +18,7 @@
         <li>{{ HTML::clever_link('/register', 'Register')}}</li>
         <li>{{ HTML::clever_link('/admin', 'Dashboard')}}</li>
           @if (Auth::guest())
-           <li>{{ HTML::link('/login', 'Login')}}</li>
+           <li>{{ HTML::clever_link('/login', 'Login')}}</li>
       </ul>
           @else
 

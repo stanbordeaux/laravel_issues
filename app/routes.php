@@ -34,6 +34,10 @@ Route::get('about', 'PagesController@about');
 
 Route::get('team', 'PagesController@team');
 
+Route::get('test', function()
+{
+	return View::make('pages.test');
+});
 // Route::post('store', 'IssuesController@store');
 
 
